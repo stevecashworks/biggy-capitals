@@ -21,7 +21,12 @@ display:flex;
 width:100%;
 `
 const Container=styled.div``
-const LinkItem=styled.div``
+const LinkItem=styled.div`
+display:flex;
+align-items:center;
+gap:15px;
+justify-content:space-around;
+`
 const Left=styled.div``
 const Right=styled.div``
 const Title=styled.p`
