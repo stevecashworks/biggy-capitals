@@ -2,7 +2,7 @@
  import bcrypt from 'bcrypt'
  import  Jwt  from 'jsonwebtoken'
  import { config } from 'dotenv';
- import cartModel from '../../models/Cart.js'
+ import cartModel from '../../models/investment.js'
  import createCustomError from '../../errors/customError.js';
  config();
  //take password out of the data, we don't want to send it to the user

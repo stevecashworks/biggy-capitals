@@ -5,16 +5,20 @@ const  cartSchema= mongoose.Schema({
         type:String,
         required:true,
     },
-    products:[
+    investments:[
         {
-            productId:{
+            status:{
                 type:String,
-                required:true
+                default:"Pending"
+
             },
-            quantity:{
-                type:Number,
-                default:1
-            }
+            proof:{
+                type:String,
+                required:true,
+            },
+            amount:{type:Number},
+
+
         }
     ],
     noOfItems:{type:Number,default:0},
@@ -24,4 +28,4 @@ const  cartSchema= mongoose.Schema({
     }
     
 },{timestamps:true})
-export default mongoose.model('cart',cartSchema);
+export default mongoose.model('Investment',cartSchema);
