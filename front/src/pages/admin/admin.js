@@ -2,7 +2,6 @@
   import Header from '../Home/Components/Header/Header';
   // import { AppCon } from '../../App';
   // import  {selectPattern,selectTheme} from '../../redux/slices/themes'
-   import { useSelector } from 'react-redux';
   import Chart from './components/Chart/Chart';
   import Widget from './components/Widgets/Widget';
   import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
@@ -69,16 +68,15 @@ gap:30px;
     
     ]
 
-    const pattern=useSelector(selectPattern)
- const theme=useSelector(selectTheme)
+
     return(
   
-   <AppCon pattern={pattern[theme]}>
+   <AppCon>
     <Container>
     <Header/>
       <hr/>
       <Mid>
-        <Left current={theme}>
+        <Left >
         <Title>Admin page </Title>
         <CategoryHeader>Lists</CategoryHeader>
         <Links>
