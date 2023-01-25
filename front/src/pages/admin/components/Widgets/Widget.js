@@ -64,8 +64,8 @@ const Widget=({title,perc,no,icon})=>{
     let back, color;
     switch(title){
         case "Users":{back="rgb(155,135,12, 0.1)"; color="rgb(155,135,12)"; break}
-        case "Orders":{back="rgb(138,43,26, 0.1)"; color="rgb(138,43,26)"; break}
-        case "Products":{back="rgb(0,119,190, 0.1)"; color="rgb(0,119,190)";break}
+        case "Investments":{back="rgb(138,43,26, 0.1)"; color="rgb(138,43,26)"; break}
+        case "Visits":{back="rgb(0,119,190, 0.1)"; color="rgb(0,119,190)";break}
     }
     return(
         <WidgetCon>

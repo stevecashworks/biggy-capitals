@@ -20,10 +20,18 @@ height:100vh;
 display:flex;
 width:100%;
 `
-const Container=styled.div``
-const LinkItem=styled.div``
-const Left=styled.div``
-const Right=styled.div``
+const Container=styled.div`
+display:flex;
+width:100%;
+`
+
+const Left=styled.div`
+flex:1;
+border-right:1px solid rgb(0,0,0,0.3);
+`
+const Right=styled.div`
+flex:5;
+`
 const Title=styled.p`
 margin: 40px auto;
 text-align:center;
@@ -38,7 +46,7 @@ const AppCon=styled .div`
 const WidgetCon=styled.div`
 width:100%;
 height:120px;
-margin:20px auto;
+margin:40px auto;
 display:flex;
 justify-content:space-around;
 `
@@ -49,24 +57,39 @@ const Links=styled.div`
  font-weight:100;
  margin:20px auto;
 `
+const LinkItemCon=styled.div`
+display:flex;
+margin:20px auto;
+width:100%;
+gap:40px;
+align-items:center;
+`
 const Charts=styled.div`
 display:flex;
-margin:0 auto;
+margin:100px auto;
 justify-content:space-around;
 gap:30px;
 `
+const LinkItem=({icon,text})=>{
+const Icon=icon
+  return(
+  <LinkItemCon>
+  <Icon/>
+  <p  style={{marginleft:'40px'}}>{text}</p>
+  </LinkItemCon>
+)
+}
 
   const Admin=()=>{
     const widgetData=[
     {title:"Users",icon:PersonOutlineIcon,perc:30,no:35000,id:useId()},
-    {title:"Products",icon:CategoryIcon,perc:80,no:48000 ,id:useId()},
-    {title:"Orders",icon:RequestQuoteIcon,perc:50,no:65000,id:useId()}
+    {title:"Visits",icon:CategoryIcon,perc:80,no:48000 ,id:useId()},
+    {title:"Investments",icon:RequestQuoteIcon,perc:50,no:65000,id:useId()}
     ]
     const  linkData=[
       {text:"Users",icon:PersonOutlineIcon,id:useId(),col:"purple "},
-      {text:"Products",icon:CategoryIcon,id:useId() ,col:"purple"} ,
-      {text:"Orders",icon:RequestQuoteIcon, id:useId(),col:"purple"},
-      {text:"Deliveries",icon:DeliveryDiningIcon, id:useId(),col:"purple"}
+      {text:"Visits",icon:CategoryIcon,id:useId() ,col:"purple"} ,
+      {text:"Investment",icon:RequestQuoteIcon, id:useId(),col:"purple"},
     
     ]
 
@@ -74,8 +97,8 @@ gap:30px;
     return(
   
    <AppCon>
-    <Container>
     <Header/>
+    <Container>
       <hr/>
       <Mid>
         <Left >
@@ -91,7 +114,7 @@ gap:30px;
             {widgetData.map(item=><Widget key={item.id} title={item.title} icon={item.icon}  perc={item.perc} no={item.no} />)}
           </WidgetCon>
           <Charts>
-            <div style={{width:"200px",height:"200px",border:"1px solid black", display:"flex",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"200px",height:"200px", display:"flex",alignItems:"center",justifyContent:"center"}}>
               
             <CircularProgressbar styles={{stroke:'purple'}} strokeWidth={2} value={70} text={"70%"}/>
             </div>
