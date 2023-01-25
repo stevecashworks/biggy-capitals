@@ -1,5 +1,5 @@
   import styled from 'styled-components';
-  import Header from '../Home/Components/Header/Header';
+  import Header from '../Home/components/Navbar';
   // import { AppCon } from '../../App';
   // import  {selectPattern,selectTheme} from '../../redux/slices/themes'
   import Chart from './components/Chart/Chart';
@@ -12,8 +12,9 @@
   // import {Container,Categories as Left,Products as Right} from '../Home/home'
   // import LinkItem from '../Home/Components/categoryItem'
   import {useId} from 'react'
-  import  {CategoryHeader} from '../Home/home'
- import 'react-circular-progressbar/dist/styles.css'  
+  // import  {CategoryHeader} from '../Home/home'
+
+  import 'react-circular-progressbar/dist/styles.css'  
   const Mid=styled.div`
 height:100vh;
 display:flex;
@@ -30,6 +31,7 @@ font-size:15px;
 font-weight:500;
 
 `
+const CategoryHeader=styled.div``
 const AppCon=styled .div`
 
 `

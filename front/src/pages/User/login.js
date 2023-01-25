@@ -6,6 +6,7 @@ const Container=styled.div`
 display:grid;
 place-items:center;
 height:100vh;
+background-color:rgb(8, 8, 56,0.8);
 
 `
 const Button=styled.button`
@@ -38,6 +39,7 @@ const Form=styled.form`
      align-items:center;
      flex-direction:column;
      gap:25px;
+     background-color:white;
 
 `
 const Title= styled.p`
@@ -84,7 +86,7 @@ const  Login=()=>{
   <Title>Login</Title>
   <Inp ref={emailRef} type='email' required placeholder='Please input your email'></Inp>    
   <Inp ref={passwordRef} type='password' required minLength={6} placeholder='Please input your password'></Inp>
-     <Link to="/register"style={{textDecoration:'none',fontSize:'12px'}}>Do not have an account? sign up here</Link>
+     <Link to="/user/register"style={{textDecoration:'none',fontSize:'12px'}}>Do not have an account? sign up here</Link>
   <Button type='submit' >Login</Button>    
     </Form>
  </Container>)

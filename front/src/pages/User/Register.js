@@ -6,6 +6,7 @@ const Container=styled.div`
 display:grid;
 place-items:center;
 height:100vh;
+background-color:rgb(8, 8, 56,0.8);
 
 `
 const Button=styled.button`
@@ -38,6 +39,7 @@ const Form=styled.form`
      align-items:center;
      flex-direction:column;
      gap:25px;
+     background-color:white;
 
 `
 const Title= styled.p`
@@ -77,11 +79,13 @@ const  Register=()=>{
   }
     const emailRef=useRef(null);
  const passwordRef=useRef(null);
+ const nameRef=useRef(null);
 
     return(
  <Container>
-    <Form onSubmit={(e)=>{e.preventDefault();register({email:emailRef.current.value,password:passwordRef.current.value})}}>
+    <Form onSubmit={(e)=>{e.preventDefault();register({email:emailRef.current.value,password:passwordRef.current.value,name:nameRef.current.value})}}>
   <Title>Register</Title>
+  <Inp ref={nameRef} type='text' required  placeholder='Please input your full name'></Inp>
   <Inp ref={emailRef} type='email' required placeholder='Please input your email'></Inp>    
   <Inp ref={passwordRef} type='password' required minLength={6} placeholder='Please input your password'></Inp>
   <Link to ='/user/login' style={{textDecoration:'none',fontSize:"12px"}}>Already have an account? log in here </Link>
