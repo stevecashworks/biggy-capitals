@@ -1,6 +1,7 @@
 import {useRef}from 'react'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
+import NavBar from '../Home/components/Navbar'
 export const apiEntry=`http://localhost:8080/api/v3`
 const Container=styled.div`
 display:grid;
@@ -52,7 +53,7 @@ font-size:20px;
 const  Register=()=>{
   
    const register=async(details)=>{
-     const {password,email}=details
+     const {password,email,name}=details
      try{
          const  thisUser=await fetch(`${apiEntry}/user/register`,{
             method:'POST',
@@ -60,11 +61,19 @@ const  Register=()=>{
                'Content-Type':"application/json"
                
             },
-            body:JSON.stringify({email,password})
+            body:JSON.stringify({email,password,name})
          }).then(res=>res.json()).then(data=>data);
          if(thisUser.success){
             localStorage.setItem('token',thisUser.result.accessToken)
             localStorage.setItem('id',thisUser.result._id)
+            if(thisUser.result.isAdmin){
+               window.location.assign('/admin');
+            }else{
+               window.location.assign('/user/dashboard');
+
+            }
+
+
          
          }
          else{
@@ -82,8 +91,11 @@ const  Register=()=>{
  const nameRef=useRef(null);
 
     return(
+      <div>
+         <NavBar/>
  <Container>
     <Form onSubmit={(e)=>{e.preventDefault();register({email:emailRef.current.value,password:passwordRef.current.value,name:nameRef.current.value})}}>
+         
   <Title>Register</Title>
   <Inp ref={nameRef} type='text' required  placeholder='Please input your full name'></Inp>
   <Inp ref={emailRef} type='email' required placeholder='Please input your email'></Inp>    
@@ -91,7 +103,10 @@ const  Register=()=>{
   <Link to ='/user/login' style={{textDecoration:'none',fontSize:"12px"}}>Already have an account? log in here </Link>
   <Button type='submit' >Register</Button>    
     </Form>
- </Container>)
+ </Container>
+ 
+      </div>
+ )
 
 }
 export default Register

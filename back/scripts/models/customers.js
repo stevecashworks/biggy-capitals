@@ -2,17 +2,18 @@
  const customerSchema=mongoose.Schema({
     name:{
         type:String,
-        Required:true,
+        required:true,
         unique:true
     },
     email:{
         type:String,
-        Required:true,
+        required:true,
         unique:true
     },password:{
         type:String,
         required:true
     },
+    
     balance:{
             type:Number,
             default:0

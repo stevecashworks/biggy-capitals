@@ -3,9 +3,9 @@ import Card from './Cards/card'
 import investBack from '../../../../assets/backgrounds/investback.jpg'
 
 const Container=styled.div`
-height:auto;
+height:900px;
 width:100%;
-padding:20px auto;
+padding:40px auto;
 position:relative;
 top:-10px;
 z-index:-1;
