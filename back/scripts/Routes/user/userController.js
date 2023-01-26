@@ -102,13 +102,11 @@
     }
  }
  export const deleteUser=async(req,res,next)=>{
-     const {user}= req;
-     const {isAdmin}=user
+    
      // if the user id matches the params id we know this user owns  the account  
-     const sameUser=req.params.id===user.id;
      
      // only allow admin or the said user to delete or modify account;
-     if(isAdmin||sameUser){
+     
         try {
              await customerModel.findByIdAndDelete(req.params.id);
              res.status(201).json({success:true,result:'user was deleted succesfully'})
@@ -116,10 +114,8 @@
                 next(createCustomError(500,error.message))
         }
         
-     }
-     else{
-  next(createCustomError(403,'You dont have rights to this action'))
-    }
+     
+    
      
        
     
@@ -138,7 +134,15 @@
                 next(createCustomError(500,error.message))      
        }
  }
+ export const creditUser=async(req,res)=>{
+    const {id,amount}=req.body
 
-
+    try {
+     const updatedUser= await customerModel.findByIdAndUpdate(id,{$inc:{balance:amount}},{new:true})
+     res.status(200).json(updatedUser)
+    } catch (error) {
+         res.status(500).json(err.message)
+    }
+ }
 
   

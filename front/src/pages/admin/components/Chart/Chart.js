@@ -4,7 +4,12 @@ const ChartCon=styled.div`
 width:600px;
 height:250px;
 box-shadow: rgba(0, 0, 0,0.7) 0px 0px 0px 0.1px, rgb(209, 213, 219) 0px 0px 0px 0.4px inset;
-padding:10px
+padding:10px;
+@media (max-width:480px){
+  width:80%;
+
+  margin-top:100px;
+}
 `
 const data = [
   {

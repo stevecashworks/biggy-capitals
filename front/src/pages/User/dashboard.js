@@ -52,7 +52,7 @@ min-height:100vh;
     flex-direction:column;
  }
  `
- const CoinCard=styled.div`
+ export const CoinCard=styled.div`
   background-color:white;
 box-shadow:2px 2px 5px rgb(0,0,0,0.2) ;
  width:400px;
@@ -62,7 +62,7 @@ box-shadow:2px 2px 5px rgb(0,0,0,0.2) ;
     margin:20px auto;
  }
  `
- const CoinCardCon=styled.div`
+  export const CoinCardCon=styled.div`
  width:100%;
  display:flex;
  flex-wrap:wrap;
@@ -72,7 +72,7 @@ box-shadow:2px 2px 5px rgb(0,0,0,0.2) ;
     flex-direction:column;
  }
  `
- const Logo=styled.img`
+export const Logo=styled.img`
  width:80px;
 height:80px;
 border-radius:50%;
@@ -104,12 +104,12 @@ border-radius:30px;
    margin:20px auto;
    `
    
-   const  Fancy=styled.input`
+    export const  Fancy=styled.input`
    width:360px;
    height:50px;
    border-radius:20px;
    display:block;
-   margin:70px auto;
+   margin:10px auto;
    padding-left:15px;
    outline:none;
    font-size:17px;
@@ -120,7 +120,7 @@ border:none;
 }
 
    `
-   const Btn=styled.button`
+  export const Btn=styled.button`
    background-color:blue;
    color:white;
    border:none;
