@@ -3,9 +3,10 @@ import Card from './Cards/card'
 import investBack from '../../../../assets/backgrounds/investback.jpg'
 
 const Container=styled.div`
-height:900px;
+height:auto;
 width:100%;
 padding:40px auto;
+gap:20px;
 position:relative;
 top:-10px;
 z-index:-1;
@@ -27,7 +28,7 @@ top:0px;
 left:0px;
 width:100%;
 height:100%;
-
+display: ${prop=>prop.bg};
 z-index:-1;
 border-radius:30px;
 
@@ -41,16 +42,16 @@ z-index:1;
 
 `
 const cardsData=[
-    { id:"card1",type:"starter",no:10,min:500, max:4999},
-    { id:"card2",type:"silver",no:12,min:5000, max:9999},
-    { id:"card3",type:"gold",no:16,min:10000, max:49999},
+    { id:"card1",type:"starter",no:5,min:500, max:4999},
+    { id:"card2",type:"silver",no:10,min:5000, max:9999},
+    { id:"card3",type:"gold",no:15,min:10000, max:49999},
     { id:"card3",type:"platinum",no:20,min:50000, max:100000},
 ]
-const Investments=()=>{
+const Investments=({bg})=>{
     console.log(cardsData)
 return (
     <Container>
-        <Background src={investBack} />
+        <Background src={investBack} bg={bg} />
             {cardsData.map(data=><Card type={data.type} key={data.id} max={data.max} no={data.no} min={data.min} />)}
         <Overlay/>
     </Container>

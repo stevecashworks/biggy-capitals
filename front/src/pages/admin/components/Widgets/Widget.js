@@ -9,6 +9,10 @@ border-radius:5px;
 padding:5px;
 display:flex;
 justify-content:space-between;
+@media (max-width:480px){
+ width:80%;
+ margin:20px auto;   
+}
 `
 const Left=styled.div`
 display:flex;
@@ -58,21 +62,22 @@ display:flex;
 align-items:center;
 justify-content:center;
 `
-const Widget=({title,perc,no,icon})=>{
+const Widget=({title,perc,no,icon,personal})=>{
     const Icon=icon
     const col=perc<50?"rgb(138, 43,26)":"rgb(0,119,190)"
     let back, color;
     switch(title){
         case "Users":{back="rgb(155,135,12, 0.1)"; color="rgb(155,135,12)"; break}
         case "Investments":{back="rgb(138,43,26, 0.1)"; color="rgb(138,43,26)"; break}
-        case "Visits":{back="rgb(0,119,190, 0.1)"; color="rgb(0,119,190)";break}
+        case "Visits"||"Payments":{back="rgb(0,119,190, 0.1)"; color="rgb(0,119,190)";break}
     }
+    const display=personal?'none':'initial';
     return(
         <WidgetCon>
             <Left>
             <Title>{title}</Title>
             <Amount>{no}</Amount>
-            <Purpose>See more {title}</Purpose>
+            <Purpose style={{display:display}}>See more {title}</Purpose>
             <Hr/>
             </Left>
             <Right>

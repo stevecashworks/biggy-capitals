@@ -21,7 +21,7 @@ const Loaded=({hasLoaded})=>{
         <Investments/>
         <Services />
         <About />
-        <Testimonies />
+        {/* <Testimonies /> */}
  </Homepage>
   )
 }

@@ -4,11 +4,13 @@ import {IoMdPerson} from 'react-icons/io'
 import  {Link} from 'react-router-dom'
 const Container=styled.div`
  z-index:2;
- height:600px;
- width:350px;
+ height:420px;
+ margin:20px;
+ width:280px;
  background-color:rgb(9, 9, 109,0.8);
  border-radius:30px;
 overflow:hidden;
+z-index:4;
  text-transform:uppercase;
  padding-bottom:10px;
  @media (max-width:600px){
@@ -101,14 +103,12 @@ const Card=({type,min,max,no})=>{
         <Container>
             <Top>
                 <Type>{type}</Type>
-                <Detail>15% roi daily</Detail>
+                <Detail>{no}% roi</Detail>
                 
             </Top>
-            <Detail> <Orange>Daily </Orange> Return</Detail>
-                <Line/>
-                <Detail>paid <Orange> {no} </Orange> times</Detail>
-                <Line/>
-                <Detail><i> <Orange style={{textTransform:"italicize"}}>15% </Orange > roi  each time</i></Detail>
+           
+            
+                <Detail><i> <Orange style={{textTransform:"italicize"}}>${no}</Orange > roi</i></Detail>
                 <Line/>
                 <MinMax>
                     <Min>
@@ -124,13 +124,10 @@ const Card=({type,min,max,no})=>{
                         <Inp value={amount} type="range" onChange={(e)=>{setAmount(e.target.value)}}></Inp>
 
                         <MinMax>
-                    <Min>
-                        <Text>per time</Text>
-                        <Orange>${(15/100)*investment}</Orange>
-                    </Min>
+                   
                     <Min>
                         <Text>Total Return</Text>
-                        <Orange>${(15/100)*investment*no}</Orange>
+                        <Orange>${(no/100)*investment*no}</Orange>
                     </Min>
                 </MinMax>
                 <Link to ="/user/register">

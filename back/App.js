@@ -15,6 +15,7 @@ import connectDb from './scripts/Connect.js';
 import errorHandler from './scripts/errors/errorHandler.js';
 import investmentRoute from './scripts/Routes/Investments/investmentRoute.js';
 import visitRoute from './scripts/Routes/visits.js';
+import walletRoute from './scripts/Routes/wallet.js';
 //our server is initialized
 
 const server=express();
@@ -29,6 +30,7 @@ server.use(express.json())
 server.use('/api/v3/user',userRoute)
 server.use('/api/v3/investment',investmentRoute)
 server.use('/api/v3/visits',visitRoute)
+server.use('/api/v3/wallets',walletRoute)
 dotenv.config();
 
 // error handling middleware
