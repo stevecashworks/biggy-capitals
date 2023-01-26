@@ -14,13 +14,18 @@ import Widget from '../admin/components/Widgets/Widget';
 // import Investments from '../Home/components/Investments/investments';
  const  DashCon=styled.div`
 display:flex;
-width:100%;
+width:100vw;
+box-sizing:border-box;
+ overflow-x:hidden;
 min-height:100vh;
 @media (max-width:480px){
   flex-direction:column;   
 }
  `
  const Con=styled.div`
+ width:100vw;
+ box-sizing:border-box;
+ overflow-x:hidden;
  `
  const Greeting=styled.div`
  text-transform:capitalize;
@@ -63,6 +68,9 @@ box-shadow:2px 2px 5px rgb(0,0,0,0.2) ;
  flex-wrap:wrap;
  justify-content:space-around;
  margin-top:60px;
+ @media (max-width:480px){
+    flex-direction:column;
+ }
  `
  const Logo=styled.img`
  width:80px;
@@ -83,6 +91,9 @@ object-fit:cover;
 box-shadow:2px 2px 5px rgb(0,0,0,0.2) ;
 height:500px;
 border-radius:30px;
+@media (max-width:480px){
+ width:90%;   
+}
 
    `
    const Large=styled.p`
@@ -104,19 +115,22 @@ border-radius:30px;
    font-size:17px;
 box-shadow:2px 2px 5px rgb(0,0,0,0.2) ;
 border:none;
+@media (max-width:480px){
+ width:80%;   
+}
 
    `
    const Btn=styled.button`
    background-color:blue;
    color:white;
-   border:none
+   border:none;
    font-weight:bold;
    font-size:17px;
    width:200px;
    height:40px;
    border-radius:10px;
    display:block;
-   margin:0 auto;
+   margin:20px auto;
 
    `
 
@@ -166,7 +180,7 @@ const Dash=()=>{
                 <Invest>
                     <Large>Invest now</Large>
                     <Fancy type='number' placeholder='How much do you intend to invest?'></Fancy>
-                        <p style={{fontSize:"18px"}}>Screenshot image as proof</p>
+                        <p style={{fontSize:"18px", margin:"10px auto"}}>Screenshot image as proof</p>
                         <input type='file'/>
                         <Btn>Submit</Btn>
                

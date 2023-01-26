@@ -19,6 +19,10 @@
 height:100vh;
 display:flex;
 width:100%;
+box-sizing:border-box;
+ @media (max-width:480px){
+  flex-direction:column;
+ }
 `
 const Container=styled.div`
 display:flex;
@@ -28,6 +32,10 @@ width:100%;
 const Left=styled.div`
 flex:1;
 border-right:1px solid rgb(0,0,0,0.3);
+box-sizing:border-box;
+ @media (max-width:480px){
+  display:none;
+ }
 `
 const Right=styled.div`
 flex:5;
@@ -49,6 +57,9 @@ height:120px;
 margin:40px auto;
 display:flex;
 justify-content:space-around;
+@media (max-width:480px){
+ flex-direction:column; 
+}
 `
 const Links=styled.div`
  display:flex;
@@ -69,6 +80,16 @@ display:flex;
 margin:100px auto;
 justify-content:space-around;
 gap:30px;
+@media (max-width:480px){
+ flex-direction:column;
+ gap:40px;
+ margin-top:100px; 
+}
+`
+const Div=styled.div`
+@media (max-width:480px){
+ display:none; 
+}
 `
 const LinkItem=({icon,text})=>{
 const Icon=icon
@@ -82,9 +103,9 @@ const Icon=icon
 
   const Admin=()=>{
     const widgetData=[
-    {title:"Users",icon:PersonOutlineIcon,perc:30,no:35000,id:useId()},
-    {title:"Visits",icon:CategoryIcon,perc:80,no:48000 ,id:useId()},
-    {title:"Investments",icon:RequestQuoteIcon,perc:50,no:65000,id:useId()}
+    {title:"Users",icon:PersonOutlineIcon,perc:30,no:0,id:useId()},
+    {title:"Visits",icon:CategoryIcon,perc:80,no:0 ,id:useId()},
+    {title:"Investments",icon:RequestQuoteIcon,perc:50,no:0,id:useId()}
     ]
     const  linkData=[
       {text:"Users",icon:PersonOutlineIcon,id:useId(),col:"purple "},
@@ -114,10 +135,10 @@ const Icon=icon
             {widgetData.map(item=><Widget key={item.id} title={item.title} icon={item.icon}  perc={item.perc} no={item.no} />)}
           </WidgetCon>
           <Charts>
-            <div style={{width:"200px",height:"200px", display:"flex",alignItems:"center",justifyContent:"center"}}>
+            <Div style={{width:"200px",height:"200px", display:"flex",alignItems:"center",justifyContent:"center"}}>
               
             <CircularProgressbar styles={{stroke:'purple'}} strokeWidth={2} value={70} text={"70%"}/>
-            </div>
+            </Div>
           <Chart/>
           </Charts>
 
