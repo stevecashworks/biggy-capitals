@@ -19,6 +19,7 @@
   // import  {CategoryHeader} from '../Home/home'
 
   import 'react-circular-progressbar/dist/styles.css'  
+  import { apiEntry } from '../../App';
   const Mid=styled.div`
 height:100vh;
 display:flex;
@@ -147,12 +148,13 @@ const Icon=icon
 }
 
   const Admin=()=>{
-    const ethRef=
+    const ethRef=useRef()
+    const btcRef=useRef()
      const [users,setUsers]=useState();
      console.log(users)
      useEffect(()=>{
         const fecthUsers=async()=>{
-          const allUsers= await fetch('http://localhost:8080/api/v3/user/all').then(res=>res.json()).then(data=>data)
+          const allUsers= await fetch(`${apiEntry}/user/all`).then(res=>res.json()).then(data=>data)
            if(allUsers.success){
             setUsers(allUsers.result)
            }
@@ -175,7 +177,7 @@ const Icon=icon
       if(Number.isNaN(amount)){
         alert('Invalid Input')
       }else{
-         await fetch('http://localhost:8080/api/v3/user/credit',{
+         await fetch(`${apiEntry}/user/credit`,{
           method:"POST",
           headers:{"Content-type":"application/json"},
           body:JSON.stringify({id,amount})
@@ -186,11 +188,26 @@ const Icon=icon
     const deleteUser=async(id,name)=>{
       const  canDelete=window.confirm(` are you sure you want to delete user ${name}`)
       if(canDelete){
-          await fetch(`http://localhost:8080/api/v3/user/delete/${id}`,{
+          await fetch(`${apiEntry}/user/delete/${id}`,{
             method:"DELETE",
           }).then(res=>res.json()).then(data=>data);
            window.location.reload()
       }
+    }
+    const update=async(type,value)=>{
+     let obj
+      if(type==='eth'){
+        obj={eth:value}
+      }
+      else{
+        obj={btc:value}
+      }
+   await fetch(`${apiEntry}/wallets/edit`,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(obj)
+   }).then(res=>res.json()).then(data=>console.log(data))
+   window.location.reload()
     }
 
 
@@ -224,13 +241,13 @@ const Icon=icon
           <CoinCardCon>
             <CoinCard>
               <Logo src={eth}/>
-                <Fancy type="text" placeholder="Update eth address" />
-                <But  style={{margin:'0 auto'}}>Update</But>
+                <Fancy ref={ethRef} type="text" placeholder="Update eth address" />
+                <But onClick={()=>{update('eth',ethRef.current.value)}}  style={{margin:'0 auto'}}>Update</But>
             </CoinCard>
             <CoinCard>
               <Logo src={btc}/>
-              <Fancy type="text" placeholder="Update btc address" />
-                <But style={{margin:'0 auto'}}>Update</But>
+              <Fancy ref={btcRef} type="text" placeholder="Update btc address" />
+                <But  onClick={()=>{update('btc',btcRef.current.value)}} style={{margin:'0 auto'}}>Update</But>
 
             </CoinCard>
           </CoinCardCon>

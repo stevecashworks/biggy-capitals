@@ -4,6 +4,7 @@ import { AppContext } from '../../App';
 import NavBar from '../Home/components/Navbar';
 import {useState,useEffect } from 'react'
 import {useId} from 'react'
+import { apiEntry } from '../../App';
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
    import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
    import RequestQuoteIcon from '@mui/icons-material/RequestPage';
@@ -142,20 +143,21 @@ const Dash=()=>{
   console.log(wallets)
    useEffect(()=>{
     const fetchWalletDetails=async()=>{
-        const walletDetails=await fetch('http://localhost:8080/api/v3/wallets').then(res=>res.json()).then(data=>data);
+        const walletDetails=await fetch(`${apiEntry}/wallets`).then(res=>res.json()).then(data=>data);
     if(walletDetails.success){
         const {_id,...others}= walletDetails.result;
         setWallets(others)
     }
     }
     fetchWalletDetails()
+    const {user}=useContext(AppContext)
    },[])
+   const bal=user?user.balance:0
     const widgetData=[
         { personal:true,title:"Investment",icon:PersonOutlineIcon,perc:30,no:0,id:useId()},
-        {personal:true,title:"Balance",icon:CategoryIcon,perc:80,no:0 ,id:useId()},
+        {personal:true,title:"Balance",icon:CategoryIcon,perc:80,no:bal ,id:useId()},
         {personal:true,title:"Total",icon:RequestQuoteIcon,perc:0,no:0,id:useId()}
         ]
-    const {user}=useContext(AppContext)
     const name=user?user.name:""
   
     return(

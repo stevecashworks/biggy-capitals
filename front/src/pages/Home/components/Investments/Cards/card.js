@@ -4,7 +4,7 @@ import {IoMdPerson} from 'react-icons/io'
 import  {Link} from 'react-router-dom'
 const Container=styled.div`
  z-index:2;
- height:420px;
+ height:auto;
  margin:20px;
  width:280px;
  background-color:rgb(9, 9, 109,0.8);

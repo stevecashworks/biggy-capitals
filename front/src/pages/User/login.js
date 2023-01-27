@@ -1,7 +1,7 @@
 import {useRef}from 'react';
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
-export const apiEntry=`http://localhost:8080/api/v3`
+import { apiEntry } from '../../App';
 const Container=styled.div`
 display:grid;
 place-items:center;
@@ -65,6 +65,7 @@ const  Login=()=>{
          if(thisUser.success){
             localStorage.setItem('token',thisUser.result.accessToken)
             localStorage.setItem('id',thisUser.result._id)
+            window.location.assign('/')
          
          }
          else{
