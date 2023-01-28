@@ -3,6 +3,7 @@ import Loading from './components/loading';
 import Loaded from './components/homepage';
 import {useState,useEffect,useContext} from 'react'
 import { AppContext } from '../../App';
+import {useNavigate} from 'react-router-dom'
 
  const  HomeCon=styled.div`
  height:100%;
@@ -11,15 +12,16 @@ import { AppContext } from '../../App';
  
  `
 const Home=()=>{
+    const navigate=useNavigate()
     const [isLoading,setIsLoading]=useState(true);
     const {user}=useContext(AppContext)
     console.log('context', user)
     if(user){
 
         if(user.isAdmin){
-            window.location.assign('/admin')
+            navigate('/admin')
         }else{
-            window.location.assign('/user/dashboard')
+          navigate('/user/dashboard')
         }
     }
     useEffect(()=>{

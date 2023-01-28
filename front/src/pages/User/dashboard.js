@@ -137,6 +137,7 @@ border:none;
 
  
 const Dash=()=>{
+    const {user}=useContext(AppContext)
   const [wallets,setWallets]= useState();
   const  btcAddress= wallets?wallets.btc:"fetching"
   const  ethAddress= wallets?wallets.eth:"fetching"
@@ -150,7 +151,6 @@ const Dash=()=>{
     }
     }
     fetchWalletDetails()
-    const {user}=useContext(AppContext)
    },[])
    const bal=user?user.balance:0
     const widgetData=[
@@ -184,7 +184,7 @@ const Dash=()=>{
                     <Fancy type='number' placeholder='How much do you intend to invest?'></Fancy>
                         <p style={{fontSize:"18px", margin:"10px auto"}}>Screenshot image as proof</p>
                         <input type='file'/>
-                        <Btn>Submit</Btn>
+                        <Btn onClick={()=>alert('we have recieved your request, and will get back to you shortly')}>Submit</Btn>
                
                 </Invest>
             <CoinCardCon>

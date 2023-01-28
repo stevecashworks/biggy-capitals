@@ -1,5 +1,5 @@
 import {useRef}from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
 import NavBar from '../Home/components/Navbar'
 import { apiEntry } from '../../App'
@@ -51,6 +51,7 @@ font-size:20px;
 `
 
 const  Register=()=>{
+    const navigate=useNavigate()
   
    const register=async(details)=>{
      const {password,email,name}=details
@@ -67,9 +68,9 @@ const  Register=()=>{
             localStorage.setItem('token',thisUser.result.accessToken)
             localStorage.setItem('id',thisUser.result._id)
             if(thisUser.result.isAdmin){
-               window.location.assign('/admin');
+               navigate('/admin');
             }else{
-               window.location.assign('/user/dashboard');
+               navigate('/user/dashboard');
 
             }
 

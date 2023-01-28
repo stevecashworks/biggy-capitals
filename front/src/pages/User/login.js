@@ -1,5 +1,5 @@
 import {useRef}from 'react';
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
 import { apiEntry } from '../../App';
 const Container=styled.div`
@@ -50,8 +50,10 @@ font-size:20px;
 `
 
 const  Login=()=>{
+   const  navigate=useNavigate()
   
    const login=async(details)=>{
+   
      const {password,email}=details
      try{
          const  thisUser=await fetch(`${apiEntry}/user/login`,{
@@ -65,7 +67,7 @@ const  Login=()=>{
          if(thisUser.success){
             localStorage.setItem('token',thisUser.result.accessToken)
             localStorage.setItem('id',thisUser.result._id)
-            window.location.assign('/')
+            navigate('/user/dashboard')
          
          }
          else{
